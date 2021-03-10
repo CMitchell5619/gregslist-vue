@@ -1,5 +1,5 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <h1>Gregslist is a site that I will build over and over in a sort of Sisyphean hell...</h1>
   </div>
 </template>
