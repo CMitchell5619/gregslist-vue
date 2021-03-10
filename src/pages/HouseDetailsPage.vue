@@ -16,7 +16,7 @@
       <div class="col-6">
         <p><strong>Bedrooms: </strong> {{state.house.bedrooms}}</p>
         <p><strong>Bathrooms: </strong>{{state.house.bathrooms}}</p>
-        <p><strong>Price: $</strong>{{state.house.price}}</p>
+        <p><strong>Price: </strong>${{state.house.price}}</p>
         <p><strong>Year: </strong>{{state.house.year}}</p>
       </div>
       <div class="col-6">
@@ -31,10 +31,11 @@
 </template>
 
 <script>
-import { useRoute, useRouter } from 'vue-router'
+import { onBeforeRouteLeave, useRoute, useRouter } from 'vue-router'
 import { housesService } from '../services/HousesService'
 import { computed, onMounted, reactive } from 'vue'
 import { AppState } from '../Appstate'
+
 export default {
   name: 'HousesDetailPage',
 
@@ -47,6 +48,11 @@ export default {
 
     onMounted(() => {
       housesService.getHouse(route.params.id)
+    })
+
+    onBeforeRouteLeave((to, from, next) => {
+      AppState.activeHouse = {}
+      next()
     })
 
     return {

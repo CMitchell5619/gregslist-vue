@@ -39,10 +39,11 @@ const routes = [
     component: CarDetailsPage
   },
   {
-    path: '/houseDetails',
+    path: '/houses/:id',
     name: 'HouseDetails',
     component: HouseDetails
   }
+
 ]
 
 const router = createRouter({
